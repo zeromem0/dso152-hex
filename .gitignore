@@ -6,5 +6,6 @@
 
 # kept local, not published
 *.md
+!/README.md
 tools/
 releases/
