@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DSO-152 Hex: butoanele</title>
+<link rel="alternate" hreflang="en" href="buttons.html">
+<style>
+  :root { --ink: #1b1d22; --band: #33363d; --line: #33363d; --soft: #f1f2f4; --mute: #5d626c; }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 24px 16px 40px; background: #fff; color: var(--ink);
+         font: 14px/1.4 "Segoe UI", system-ui, -apple-system, Arial, sans-serif; }
+  main { max-width: 860px; margin: 0 auto; }
+  h1 { font-size: 15px; letter-spacing: .06em; text-transform: uppercase; color: #fff; margin: 0 0 14px;
+       background: var(--band); display: inline-block; padding: 7px 34px 7px 14px;
+       clip-path: polygon(0 0, 100% 0, calc(100% - 20px) 100%, 0 100%); }
+  h1 small { font-weight: 400; text-transform: none; letter-spacing: 0; opacity: .8; margin-left: 8px; }
+  .frame { border: 1.5px solid var(--line); border-radius: 12px; overflow: hidden; margin-bottom: 22px; }
+  .scroll { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; min-width: 560px; }
+  th, td { border: 1px solid var(--line); padding: 7px 10px; text-align: center; vertical-align: middle; }
+  tr:first-child th { border-top: 0; } tr:last-child td { border-bottom: 0; }
+  th:first-child, td:first-child { border-left: 0; } th:last-child, td:last-child { border-right: 0; }
+  th { font-weight: 700; background: var(--soft); }
+  td.b { font-weight: 700; font-size: 16px; white-space: nowrap; width: 84px; }
+  td.op { color: var(--mute); width: 92px; }
+  td.w { background: var(--soft); }
+  code { font: 600 12.5px Consolas, "Cascadia Mono", monospace; background: var(--soft);
+         border: 1px solid #cfd2d8; border-radius: 4px; padding: 0 4px; white-space: nowrap; }
+  th code { background: #fff; }
+  p.note { color: var(--mute); margin: -10px 2px 22px; font-size: 13px; }
+  @media print { body { padding: 0; font-size: 12px; } .frame { break-inside: avoid; } }
+</style>
+</head>
+<body>
+<main>
+
+<h1>Meniul de pornire <small>DSO-152, Hex v0.88</small></h1>
+<div class="frame"><div class="scroll">
+<table>
+  <tr><th>Buton</th><th>Ce face</th></tr>
+  <tr><td class="b">▲ ▼</td><td>Alege: RS232 Tester, TTL Sender, Memory sau Settings</td></tr>
+  <tr><td class="b">OK, RUN</td><td>Pornește ce e ales</td></tr>
+</table>
+</div></div>
+
+<h1>RS232 Tester <small>butoanele</small></h1>
+<div class="frame"><div class="scroll">
+<table>
+  <tr><th>Buton</th><th>Apăsare</th><th>În <code>RUN</code></th><th>Oprit: <code>HOLD</code> sau <code>SNAP</code></th></tr>
+  <tr><td class="b">◄</td><td class="op">scurt</td><td colspan="2">Domeniul scade: R7 → R6 …</td></tr>
+  <tr><td class="b" rowspan="2">OK</td><td class="op">scurt</td><td colspan="2">Semnalul citit: <code>RS232</code> (repaus negativ) ↔ <code>TTL</code> (repaus pozitiv)</td></tr>
+  <tr><td class="op">ținut</td><td colspan="2" class="w">Înapoi la meniul de pornire</td></tr>
+  <tr><td class="b">►</td><td class="op">scurt</td><td colspan="2">Domeniul crește: R7 → R8 …</td></tr>
+  <tr><td class="b">AUTO</td><td class="op">scurt</td><td colspan="2">Viteza: 9600 8N1 → 19200 8N1 → autodetecție (<code>A</code> în bară)</td></tr>
+  <tr><td class="b" rowspan="2">MODE</td><td class="op">scurt</td><td colspan="2">Vederea: protocol → hex → caractere → mare (la eliberarea butonului)</td></tr>
+  <tr><td class="op">ținut</td><td>—</td><td class="w">Doar în <code>WAIT</code>: simulează primirea mesajului „Apreciometru RS232” + CR LF</td></tr>
+  <tr><td class="b">▲</td><td class="op">scurt</td><td colspan="2">Rata de eșantionare crește</td></tr>
+  <tr><td class="b">▼</td><td class="op">scurt</td><td colspan="2">Rata de eșantionare scade</td></tr>
+  <tr><td class="b">RUN</td><td class="op">scurt</td><td>Îngheață: <code>RUN</code> → <code>HOLD</code></td><td>Din <code>HOLD</code>: armează captura (<code>WAIT</code>). Din <code>SNAP</code>: așteaptă captura următoare.</td></tr>
+  <tr><td class="b">⏻</td><td class="op">scurt</td><td colspan="2">Pornit / oprit. Cu OK ținut la pornire: disc USB pentru firmware.</td></tr>
+</table>
+</div></div>
+
+<h1>TTL Sender <small>retrimite bufferul sau o zonă de flash pe ieșirea de calibrare, serial TTL 8N1</small></h1>
+<div class="frame"><div class="scroll">
+<table>
+  <tr><th>Buton</th><th>Ce face</th></tr>
+  <tr><td class="b">◄ ►</td><td>Viteza: 1200 … 115200; pentru buffer pornește pe cea la care a fost citit semnalul</td></tr>
+  <tr><td class="b">▲ ▼</td><td>Ce se trimite: toată sursa (<code>ALL</code>) sau un singur bloc. Sursa (bufferul sau o zonă de flash) se alege în Settings și apare în bară. Ecranul arată CRC-32 al selecției.</td></tr>
+  <tr><td class="b">RUN</td><td>Trimite selecția, în formatul din Settings; RUN din nou o oprește</td></tr>
+  <tr><td class="b">MODE</td><td>Înapoi la meniu; la fel OK ținut</td></tr>
+</table>
+</div></div>
+
+<h1>Settings <small>se păstrează la oprire</small></h1>
+<div class="frame"><div class="scroll">
+<table>
+  <tr><th>Buton</th><th>Ce face</th></tr>
+  <tr><td class="b">▲ ▼</td><td>Alege rândul: Theme, Export, Block, Source, Buffer</td></tr>
+  <tr><td class="b">◄ ►</td><td>Theme: Default, Light, eInk, Night, Phosphor, Bluesky, Orange. Export: Raw, Hex dump, Intel HEX. Block: tot odată, 64, 256, 1024 octeți. Source: Buffer, Bootloader, Application, Calibration, Settings (ce trimite TTL Sender; nu se păstrează, la pornire e iar Buffer). Valorile se rotesc la capete.</td></tr>
+  <tr><td class="b">OK, RUN, MODE</td><td>Înapoi la meniu; setările schimbate se scriu în flash, în ultimii 16 octeți ai paginii de calibrare (restul paginii rămâne cum era). Se văd din Memory → Settings.</td></tr>
+</table>
+</div></div>
+
+<h1>Memory <small>flash-ul, doar citit</small></h1>
+<div class="frame"><div class="scroll">
+<table>
+  <tr><th>Buton</th><th>Ce face</th></tr>
+  <tr><td class="b">AUTO</td><td>Zona: Application (<code>08003C00–0800FBFF</code>), Calibration (<code>0800FC00</code>, 1 kB), Settings (<code>0800FFF0</code>, ultimii 16 octeți ai paginii de calibrare), Bootloader (<code>08000000–08003BFF</code>), apoi iar Application</td></tr>
+  <tr><td class="b">▲ ▼</td><td>Jumătate de ecran înapoi / înainte</td></tr>
+  <tr><td class="b">◄ ►</td><td>1 kB înapoi / înainte</td></tr>
+  <tr><td class="b">OK</td><td>Hex (adresa și 16 octeți pe linie) sau caractere; rămâne aceeași poziție</td></tr>
+  <tr><td class="b">MODE</td><td>Înapoi la meniu; la fel OK ținut</td></tr>
+</table>
+</div></div>
+
+<h1>Captura <small>RS232 Tester, butonul RUN, pas cu pas</small></h1>
+<div class="frame"><div class="scroll">
+<table>
+  <tr><th>Bara arată</th><th>Ce se întâmplă</th><th>RUN apăsat duce la</th></tr>
+  <tr><td class="b"><code>RUN</code></td><td>Citește și afișează continuu</td><td><code>HOLD</code></td></tr>
+  <tr><td class="b"><code>HOLD</code></td><td>Ecran înghețat, nu mai citește</td><td><code>WAIT</code></td></tr>
+  <tr><td class="b"><code>WAIT</code></td><td>Așteaptă primul bit de start. MODE ținut: mesajul simulat, ca și cum ar fi venit pe fir</td><td><code>RUN</code></td></tr>
+  <tr><td class="b"><code>SNAP</code></td><td>Primele 8 caractere, ca formă de undă cu casete. Tot mesajul, până când linia stă 50 ms în repaus sau vin ~32 de caractere, intră în buffer: sufixul se vede cu MODE, în vederea mare.</td><td><code>WAIT</code> (încă o captură)</td></tr>
+</table>
+</div></div>
+
+<h1>Pe ecran <small>bara de sus și contoarele roșii</small></h1>
+<div class="frame"><div class="scroll">
+<table>
+  <tr><th>Text</th><th>Înseamnă</th><th>Text</th><th>Înseamnă</th></tr>
+  <tr><td class="b"><code>R7 DC</code></td><td>Domeniul 0…10 și cuplajul</td><td class="b"><code>frm</code></td><td>Bit de stop greșit: viteză, format sau prag nepotrivit</td></tr>
+  <tr><td class="b"><code>9600 8N1</code></td><td>Viteza și formatul; <code>?</code> = încă nehotărât</td><td class="b"><code>par</code></td><td>Paritate greșită</td></tr>
+  <tr><td class="b"><code>1234 B</code></td><td>Caractere primite</td><td class="b"><code>ovr</code></td><td>Bloc de eșantioane pierdut</td></tr>
+  <tr><td class="b"><code>kS/s</code>, <code>spb</code></td><td>Rata: 100 k, 250 k, 500 k, 1,25 M, 2 M; eșantioane pe bit</td><td class="b"><code>drp</code></td><td>Caracter decodat, dar neafișat la timp</td></tr>
+</table>
+</div></div>
+
+<p class="note">Vitezele fixe își aleg singure rata: 100 kS/s la 9600, 250 kS/s la 19200. Bufferul rămâne neatins la ieșirea din tester; se golește doar cu AUTO ținut pe rândul Buffer din Settings. Ieșirea de calibrare stă la 0 V, mai puțin în TTL Sender, unde stă la 3,3 V (linie în repaus). Pe laptop, exportul se primește cu <code>tools\ttl_receive.ps1 -Port COMx</code> (adaptor USB-TTL: RX la ieșirea de calibrare, masă la masă); CRC-ul afișat de script trebuie să fie cel de pe ecranul aparatului.</p>
+
+</main>
+</body>
+</html>

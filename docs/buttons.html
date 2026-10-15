@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DSO-152 Hex: buttons</title>
+<link rel="alternate" hreflang="ro" href="butoane.html">
+<style>
+  :root { --ink: #1b1d22; --band: #33363d; --line: #33363d; --soft: #f1f2f4; --mute: #5d626c; }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 24px 16px 40px; background: #fff; color: var(--ink);
+         font: 14px/1.4 "Segoe UI", system-ui, -apple-system, Arial, sans-serif; }
+  main { max-width: 860px; margin: 0 auto; }
+  h1 { font-size: 15px; letter-spacing: .06em; text-transform: uppercase; color: #fff; margin: 0 0 14px;
+       background: var(--band); display: inline-block; padding: 7px 34px 7px 14px;
+       clip-path: polygon(0 0, 100% 0, calc(100% - 20px) 100%, 0 100%); }
+  h1 small { font-weight: 400; text-transform: none; letter-spacing: 0; opacity: .8; margin-left: 8px; }
+  .frame { border: 1.5px solid var(--line); border-radius: 12px; overflow: hidden; margin-bottom: 22px; }
+  .scroll { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; min-width: 560px; }
+  th, td { border: 1px solid var(--line); padding: 7px 10px; text-align: center; vertical-align: middle; }
+  tr:first-child th { border-top: 0; } tr:last-child td { border-bottom: 0; }
+  th:first-child, td:first-child { border-left: 0; } th:last-child, td:last-child { border-right: 0; }
+  th { font-weight: 700; background: var(--soft); }
+  td.b { font-weight: 700; font-size: 16px; white-space: nowrap; width: 84px; }
+  td.op { color: var(--mute); width: 92px; }
+  td.w { background: var(--soft); }
+  code { font: 600 12.5px Consolas, "Cascadia Mono", monospace; background: var(--soft);
+         border: 1px solid #cfd2d8; border-radius: 4px; padding: 0 4px; white-space: nowrap; }
+  th code { background: #fff; }
+  p.note { color: var(--mute); margin: -10px 2px 22px; font-size: 13px; }
+  @media print { body { padding: 0; font-size: 12px; } .frame { break-inside: avoid; } }
+</style>
+</head>
+<body>
+<main>
+
+<h1>Start menu <small>DSO-152, Hex v0.88</small></h1>
+<div class="frame"><div class="scroll">
+<table>
+  <tr><th>Button</th><th>What it does</th></tr>
+  <tr><td class="b">▲ ▼</td><td>Choose: RS232 Tester, TTL Sender, Memory or Settings</td></tr>
+  <tr><td class="b">OK, RUN</td><td>Start the chosen one</td></tr>
+</table>
+</div></div>
+
+<h1>RS232 Tester <small>buttons</small></h1>
+<div class="frame"><div class="scroll">
+<table>
+  <tr><th>Button</th><th>Press</th><th>In <code>RUN</code></th><th>Stopped: <code>HOLD</code> or <code>SNAP</code></th></tr>
+  <tr><td class="b">◄</td><td class="op">short</td><td colspan="2">Range down: R7 → R6 …</td></tr>
+  <tr><td class="b" rowspan="2">OK</td><td class="op">short</td><td colspan="2">Line type: <code>RS232</code> (rests negative) ↔ <code>TTL</code> (rests positive)</td></tr>
+  <tr><td class="op">held</td><td colspan="2" class="w">Back to the start menu</td></tr>
+  <tr><td class="b">►</td><td class="op">short</td><td colspan="2">Range up: R7 → R8 …</td></tr>
+  <tr><td class="b">AUTO</td><td class="op">short</td><td colspan="2">Speed: 9600 8N1 → 19200 8N1 → auto-detect (<code>A</code> in the bar)</td></tr>
+  <tr><td class="b" rowspan="2">MODE</td><td class="op">short</td><td colspan="2">View: protocol → hex → characters → large (on release)</td></tr>
+  <tr><td class="op">held</td><td>—</td><td class="w">Only in <code>WAIT</code>: simulates receiving “Apreciometru RS232” + CR LF</td></tr>
+  <tr><td class="b">▲</td><td class="op">short</td><td colspan="2">Sample rate up</td></tr>
+  <tr><td class="b">▼</td><td class="op">short</td><td colspan="2">Sample rate down</td></tr>
+  <tr><td class="b">RUN</td><td class="op">short</td><td>Freeze: <code>RUN</code> → <code>HOLD</code></td><td>From <code>HOLD</code>: arm a capture (<code>WAIT</code>). From <code>SNAP</code>: wait for the next capture.</td></tr>
+  <tr><td class="b">⏻</td><td class="op">short</td><td colspan="2">Power on / off. Held with OK at power-on: USB drive for firmware updates.</td></tr>
+</table>
+</div></div>
+
+<h1>TTL Sender <small>replays the buffer or a stretch of flash on the calibration output, TTL serial 8N1</small></h1>
+<div class="frame"><div class="scroll">
+<table>
+  <tr><th>Button</th><th>What it does</th></tr>
+  <tr><td class="b">◄ ►</td><td>Speed: 1200 … 115200; for the buffer it starts at the speed the signal was read at</td></tr>
+  <tr><td class="b">▲ ▼</td><td>What to send: the whole source (<code>ALL</code>) or a single block. The source (the buffer or a stretch of flash) is chosen in Settings and shown in the bar. The screen shows the CRC-32 of the selection.</td></tr>
+  <tr><td class="b">RUN</td><td>Send the selection in the format chosen in Settings; RUN again stops it</td></tr>
+  <tr><td class="b">MODE</td><td>Back to the menu; OK held does the same</td></tr>
+</table>
+</div></div>
+
+<h1>Settings <small>kept at power-off</small></h1>
+<div class="frame"><div class="scroll">
+<table>
+  <tr><th>Button</th><th>What it does</th></tr>
+  <tr><td class="b">▲ ▼</td><td>Choose the row: Theme, Export, Block, Source, Buffer</td></tr>
+  <tr><td class="b">◄ ►</td><td>Theme: Default, Light, eInk, Night, Phosphor, Bluesky, Orange. Export: Raw, Hex dump, Intel HEX. Block: all in one, 64, 256, 1024 bytes. Source: Buffer, Bootloader, Application, Calibration, Settings (what TTL Sender sends; not kept, Buffer again at power-on). Values wrap around at the ends.</td></tr>
+  <tr><td class="b">OK, RUN, MODE</td><td>Back to the menu; changed settings are written to flash, in the last 16 bytes of the calibration page (the rest of the page is kept as it was). They can be seen from Memory → Settings.</td></tr>
+</table>
+</div></div>
+
+<h1>Memory <small>the flash, read only</small></h1>
+<div class="frame"><div class="scroll">
+<table>
+  <tr><th>Button</th><th>What it does</th></tr>
+  <tr><td class="b">AUTO</td><td>The area: Application (<code>08003C00–0800FBFF</code>), Calibration (<code>0800FC00</code>, 1 kB), Settings (<code>0800FFF0</code>, the last 16 bytes of the calibration page), Bootloader (<code>08000000–08003BFF</code>), then Application again</td></tr>
+  <tr><td class="b">▲ ▼</td><td>Half a screen back / on</td></tr>
+  <tr><td class="b">◄ ►</td><td>1 kB back / on</td></tr>
+  <tr><td class="b">OK</td><td>Hex (address and 16 bytes a line) or characters; the position is kept</td></tr>
+  <tr><td class="b">MODE</td><td>Back to the menu; OK held does the same</td></tr>
+</table>
+</div></div>
+
+<h1>Capture <small>RS232 Tester, the RUN button step by step</small></h1>
+<div class="frame"><div class="scroll">
+<table>
+  <tr><th>The bar shows</th><th>What happens</th><th>RUN leads to</th></tr>
+  <tr><td class="b"><code>RUN</code></td><td>Reads and displays continuously</td><td><code>HOLD</code></td></tr>
+  <tr><td class="b"><code>HOLD</code></td><td>Screen frozen, no longer reading</td><td><code>WAIT</code></td></tr>
+  <tr><td class="b"><code>WAIT</code></td><td>Waits for the first start bit. MODE held: the simulated message, as if it had come down the line</td><td><code>RUN</code></td></tr>
+  <tr><td class="b"><code>SNAP</code></td><td>The first 8 characters as a waveform with boxes. The whole message, until the line has rested for 50 ms or about 32 characters have arrived, goes into the buffer: the suffix can be seen with MODE, in the large view.</td><td><code>WAIT</code> (another capture)</td></tr>
+</table>
+</div></div>
+
+<h1>On screen <small>the top bar and the red counters</small></h1>
+<div class="frame"><div class="scroll">
+<table>
+  <tr><th>Text</th><th>Means</th><th>Text</th><th>Means</th></tr>
+  <tr><td class="b"><code>R7 DC</code></td><td>Range 0…10 and coupling</td><td class="b"><code>frm</code></td><td>Bad stop bit: wrong speed, format or threshold</td></tr>
+  <tr><td class="b"><code>9600 8N1</code></td><td>Speed and format; <code>?</code> = not settled yet</td><td class="b"><code>par</code></td><td>Bad parity</td></tr>
+  <tr><td class="b"><code>1234 B</code></td><td>Characters received</td><td class="b"><code>ovr</code></td><td>A block of samples was lost</td></tr>
+  <tr><td class="b"><code>kS/s</code>, <code>spb</code></td><td>Rate: 100 k, 250 k, 500 k, 1.25 M, 2 M; samples per bit</td><td class="b"><code>drp</code></td><td>Character decoded but not shown in time</td></tr>
+</table>
+</div></div>
+
+<p class="note">The fixed speeds choose their own sample rate: 100 kS/s for 9600, 250 kS/s for 19200. The buffer is left untouched when the tester is left; only AUTO held on the Buffer row in Settings empties it. The calibration output sits at 0 V, except in TTL Sender, where it sits at 3.3 V (an idle line). On a laptop, the export is received with <code>tools\ttl_receive.ps1 -Port COMx</code> (USB-TTL adapter: RX to the calibration output, ground to ground); the CRC the script prints must match the one on the instrument's screen.</p>
+
+</main>
+</body>
+</html>
