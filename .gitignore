@@ -7,5 +7,6 @@
 # kept local, not published
 *.md
 !/README.md
-tools/
+tools/*
+!tools/ttl_receive.ps1
 releases/
