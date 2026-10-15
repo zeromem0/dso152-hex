@@ -51,7 +51,8 @@ and the bootloader itself is never touched.
 4. **Hold OK and switch it on.** The screen shows *Enter firmware upgrade mode*, and a USB
    drive appears on the computer.
 5. **Drag and drop** `DSO152_APP_V0.1.bin` onto that drive and wait until the copy has finished.
-6. Eject the drive, unplug, and switch the unit off and on. The start menu should appear.
+6. Eject the drive. The unit does not start the new firmware by itself: **press the power
+   button briefly**, and the start menu appears.
 
 Good to know:
 
